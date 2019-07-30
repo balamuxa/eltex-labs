@@ -2,12 +2,7 @@ package ru.eltex.app.java.lab1;
 
 import java.util.Random;
 
-import ru.eltex.app.java.lab1.EnumValue.EnumKraskaName;
-import ru.eltex.app.java.lab1.EnumValue.EnumKraskaDeveloper;
-import ru.eltex.app.java.lab1.EnumValue.EnumInstrumentsName;
-import ru.eltex.app.java.lab1.EnumValue.EnumInstrumentsDeveloper;
-import ru.eltex.app.java.lab1.EnumValue.EnumStroymatName;
-import ru.eltex.app.java.lab1.EnumValue.EnumStroymatDeveloper;
+import ru.eltex.app.java.lab1.EnumValue.*;
 
 public class Rand {
 

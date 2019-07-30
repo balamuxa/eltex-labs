@@ -1,6 +1,7 @@
 package ru.eltex.app.java.lab1;
 
 public class EnumValue {
+
     public enum EnumKraskaName {
         Белая,
         Черная,

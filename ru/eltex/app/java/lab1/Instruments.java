@@ -5,10 +5,9 @@ import java.util.UUID;
 
 public class Instruments extends Tovar {
 
-
     Instruments(){
         ID = UUID.randomUUID();
-        counter++;
+//        counter++;
         this.name = "";
         this.article = 0;
         this.price = 0;
@@ -23,6 +22,7 @@ public class Instruments extends Tovar {
         this.developer = developer;
         counter++;
     }
+
     @Override
     public void create() {
         super.create();

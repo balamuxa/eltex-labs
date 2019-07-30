@@ -29,9 +29,9 @@ public abstract class Tovar implements ICrudAction {
         System.out.println("Артикул: " + this.article);
         System.out.println("Цена:" + this.price);
         System.out.println("Производитель:" + this.developer);
-        System.out.println("+++++++++++++++++++++++++++++++++");
-        System.out.println("Количество товаров: " + counter);
-        System.out.println("---------------------------------");
+//        System.out.println("+++++++++++++++++++++++++++++++++");
+//        System.out.println("Количество товаров: " + counter);
+//        System.out.println("---------------------------------");
     }
 
     @Override

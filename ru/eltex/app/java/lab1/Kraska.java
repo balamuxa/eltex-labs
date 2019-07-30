@@ -13,6 +13,7 @@ public class Kraska extends Tovar {
         this.price = 0;
         this.developer = "";
     }
+
     Kraska(String name, int article, int price, String developer) {
 //        this.ID = id;
         this.name = name;

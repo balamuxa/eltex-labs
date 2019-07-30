@@ -7,7 +7,7 @@ public class Stroymat extends Tovar {
 
     Stroymat() {
         ID = UUID.randomUUID();
-        counter++;
+//        counter++;
         this.name = "";
         this.article = 0;
         this.price = 0;

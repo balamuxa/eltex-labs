@@ -7,7 +7,6 @@ public class Main {
     public static final String instruments = "instruments";
     public static final String stroymat = "stroymat";
     public static int cases;
-//    public static int kol;
 
     public static void main(String[] args) {
 
@@ -17,7 +16,6 @@ public class Main {
             /*      Проверка работы перегрузки конструктора     */
 //            Kraska kraska = new Kraska("Green", 100023, 12323, "Russia");
 //            kraska.read();
-
 
             System.out.println("Введите количество товара: ");
             Tovar.counter = scanner.nextInt();
@@ -29,7 +27,6 @@ public class Main {
                         "\n3-ввод данных с клавиатуры" +
                         "\n4-принудительное зануление данных в объекте и декремент счетчика" +
                         "\n0-Выход");
-                System.out.println(Tovar.counter);
                 cases = scanner.nextInt();
                 switch (cases) {
                     case 1:
@@ -48,12 +45,19 @@ public class Main {
                         }
                         break;
                     case 2:
-                        if (Tovar.counter == 0) {
-                            System.out.println("Нет данных в объекте!!");
-                        } else {
-                            for (int i = 0; i < Tovar.counter; i++) {
-                                kraskas[i].read();
+                        try {
+                            if (Tovar.counter == 0) {
+                                System.out.println("Нет данных");
+                            } else {
+                                for (int i = 0; i < Tovar.counter; i++) {
+                                    kraskas[i].read();
+                                    System.out.println("---------------------------------");
+                                }
+                                System.out.println("Количество товаров: " + Tovar.counter);
+                                System.out.println("---------------------------------");
                             }
+                        } catch (NullPointerException e) {
+                            System.out.println("Объект пустой, сначала нужно заполнить его значениями!!!");
                         }
                         break;
                     case 3:
@@ -62,6 +66,9 @@ public class Main {
                         System.out.println("Введенные данные:");
                         kraskas[Tovar.counter].read();
                         Tovar.counter++;
+                        System.out.println("---------------------------------");
+                        System.out.println("Количество товаров: " + Tovar.counter);
+                        System.out.println("---------------------------------");
                         break;
                     case 4:
                         for (int i = 0; i < Tovar.counter; i++) {
@@ -92,7 +99,6 @@ public class Main {
                         "\n3-ввод данных с клавиатуры" +
                         "\n4-принудительное зануление данных в объекте и декремент счетчика" +
                         "\n0-Выход");
-                System.out.println(Tovar.counter);
                 cases = scanner.nextInt();
                 switch (cases) {
                     case 1:
@@ -111,12 +117,19 @@ public class Main {
                         }
                         break;
                     case 2:
-                        if (Tovar.counter == 0) {
-                            System.out.println("Нет данных в объекте!!");
-                        } else {
-                            for (int i = 0; i < Tovar.counter; i++) {
-                                instruments[i].read();
+                        try {
+                            if (Tovar.counter == 0) {
+                                System.out.println("Нет данных в объекте!!");
+                            } else {
+                                for (int i = 0; i < Tovar.counter; i++) {
+                                    instruments[i].read();
+                                    System.out.println("---------------------------------");
+                                }
+                                System.out.println("Количество товаров: " + Tovar.counter);
+                                System.out.println("---------------------------------");
                             }
+                        } catch (NullPointerException e) {
+                            System.out.println("Объект пустой, сначала нужно заполнить его значениями!!!");
                         }
                         break;
                     case 3:
@@ -125,6 +138,9 @@ public class Main {
                         System.out.println("Введенные данные:");
                         instruments[Tovar.counter].read();
                         Tovar.counter++;
+                        System.out.println("---------------------------------");
+                        System.out.println("Количество товаров: " + Tovar.counter);
+                        System.out.println("---------------------------------");
                         break;
                     case 4:
                         for (int i = 0; i < Tovar.counter; i++) {
@@ -155,7 +171,6 @@ public class Main {
                         "\n3-ввод данных с клавиатуры" +
                         "\n4-принудительное зануление данных в объекте и декремент счетчика" +
                         "\n0-Выход");
-                System.out.println(Tovar.counter);
                 cases = scanner.nextInt();
                 switch (cases) {
                     case 1:
@@ -174,12 +189,19 @@ public class Main {
                         }
                         break;
                     case 2:
-                        if (Tovar.counter == 0) {
-                            System.out.println("Нет данных в объекте!!");
-                        } else {
-                            for (int i = 0; i < Tovar.counter; i++) {
-                                stroymats[i].read();
+                        try {
+                            if (Tovar.counter == 0) {
+                                System.out.println("Нет данных в объекте!!");
+                            } else {
+                                for (int i = 0; i < Tovar.counter; i++) {
+                                    stroymats[i].read();
+                                    System.out.println("---------------------------------");
+                                }
+                                System.out.println("Количество товаров: " + Tovar.counter);
+                                System.out.println("---------------------------------");
                             }
+                        } catch (NullPointerException e) {
+                            System.out.println("Объект пустой, сначала нужно заполнить его значениями!!!");
                         }
                         break;
                     case 3:
@@ -188,6 +210,9 @@ public class Main {
                         System.out.println("Введенные данные:");
                         stroymats[Tovar.counter].read();
                         Tovar.counter++;
+                        System.out.println("---------------------------------");
+                        System.out.println("Количество товаров: " + Tovar.counter);
+                        System.out.println("---------------------------------");
                         break;
                     case 4:
                         for (int i = 0; i < Tovar.counter; i++) {
