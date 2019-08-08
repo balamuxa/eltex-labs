@@ -1,5 +1,6 @@
-package ru.eltex.app.java.lab1;
+package ru.eltex.app.java.lab2;
 
+import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.UUID;
@@ -7,6 +8,7 @@ import java.util.UUID;
 public abstract class Tovar implements ICrudAction {
 
     UUID ID;
+    public static HashSet<UUID> setId = new HashSet<>();
     public static int counter = 0;
     protected String name;
     protected int article;
@@ -17,6 +19,7 @@ public abstract class Tovar implements ICrudAction {
     public void create() {
         Random random = new Random();
         this.ID = UUID.randomUUID();
+        this.setId.add(ID);
         this.article = random.nextInt(1000000);
         this.price = random.nextInt(5000);
 //        counter++;
@@ -51,7 +54,14 @@ public abstract class Tovar implements ICrudAction {
         counter--;
     }
 
-    public UUID getUUID(){
+    public UUID getUUID() {
         return ID;
-    };
+    }
+
+    public HashSet<UUID> ser(){
+//        HashSet<UUID> setId = Tovar.setId;
+        return setId;
+    }
+
+    ;
 }
