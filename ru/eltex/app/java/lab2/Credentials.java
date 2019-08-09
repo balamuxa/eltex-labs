@@ -18,7 +18,6 @@ public class Credentials {
         this.eMail = eMail;
     }
 
-
     public void show() {
         System.out.println("Ваш ID=" + id);
         System.out.println("Имя=" + name);

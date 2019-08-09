@@ -58,10 +58,7 @@ public abstract class Tovar implements ICrudAction {
         return ID;
     }
 
-    public HashSet<UUID> ser(){
-//        HashSet<UUID> setId = Tovar.setId;
+    public HashSet<UUID> getUUIDs() {
         return setId;
     }
-
-    ;
 }

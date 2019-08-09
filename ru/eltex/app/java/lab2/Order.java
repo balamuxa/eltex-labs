@@ -37,13 +37,6 @@ public class Order {
             return false;
     }
 
-    public boolean checkIntervalDone(long time) {
-        if ((this.dateCreate.getTime() + this.timeWaiting) < time) {
-            return true;
-        } else
-            return false;
-    }
-
     Order() {
     }
 
@@ -52,10 +45,9 @@ public class Order {
         this.credentials = credentials;
         this.status = OrderStatus.WAIT;
         this.dateCreate = new Date(System.currentTimeMillis());
-//        this.timeWaiting = (long) (Math.random() * 100000);
-        this.timeWaiting = 5000;
+        this.timeWaiting = (long) (Math.random() * 30000);
+//        this.timeWaiting = 5000;
     }
-
 
     public void show() {
         shoppingCart.show();
@@ -65,6 +57,6 @@ public class Order {
         System.out.println("Статус заказа:" + status);
         System.out.println("Дата создания:" + dateCreate);
         System.out.println("Время ожидания:" + timeWaiting / 1000 + " сек");
-    }
 
+    }
 }

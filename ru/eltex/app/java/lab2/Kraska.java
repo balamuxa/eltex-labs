@@ -9,12 +9,7 @@ public class Kraska extends Tovar {
     Kraska() {
         ID = UUID.randomUUID();
 //        counter++;
-//        setId.add(ID);
-        boolean check=false;
-        for (; check != true;) {
-            this.ID = UUID.randomUUID();
-            check = setId.add(ID);
-        }
+        setId.add(ID);
         this.name = "";
         this.article = 0;
         this.price = 0;
@@ -66,7 +61,7 @@ public class Kraska extends Tovar {
     }
 
     @Override
-    public HashSet<UUID> ser() {
-        return super.ser();
+    public HashSet<UUID> getUUIDs() {
+        return super.getUUIDs();
     }
 }

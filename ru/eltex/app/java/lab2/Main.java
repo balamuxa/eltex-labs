@@ -21,79 +21,126 @@ public class Main {
             kraskas[i].create();
             shoppingCart.add(kraskas[i]);
         }
-        System.out.println("Оформить заказ?\n1. Да\n2. Нет\n0. Выход");
-        sc = scanner.nextInt();
-        switch (sc) {
-            case 1:
-                orders.offer(shoppingCart, credentials);
-                orders.checkTime();
-                System.out.println("Ваш заказ:");
-                System.out.println("--------------------------");
-                orders.show();
-                break;
-            case 2:
-                while (true) {
-                    System.out.println("Выберите действие:" +
-                            "\n1. Посмотреть статус заказа" +
-                            "\n2. Оформить заказ" +
-                            "\n3. Функция поиска объекта по индетификатору" +
-                            "\n4. Функция проверки заказов - обход коллекции и удаление всех объектов," +
-                            " время ожидания которых истекло и статус «обработан»" +
-                            "\n0. Выход");
-                    sc = scanner.nextInt();
-                    switch (sc) {
-                        case 1:
-                            orders.checkTime();
-                            System.out.println("Статус заказа: " + orders.orderStat() +
-                                    "\nВремя ожидания перехода заказа в другое состояние: " +
-                                    orders.timeWait() / 1000 + " сек");
-                            System.out.println("--------------------------");
-                            break;
-                        case 2:
-                            if (orders.orderStat() == null) {
-                                orders.offer(shoppingCart, credentials);
-                                orders.checkTime();
-                                System.out.println("Ваш заказ:");
-                                System.out.println("--------------------------");
-                                orders.show();
-                            } else {
-                                System.out.println("Заказ уже оформлен");
-                            }
-                            break;
-                        case 3:
-                            /*Поиск в корзине по id*/
-                            try {
-                                System.out.println("Какой ID выберете?");
-                                for (int i = 0; i < Tovar.counter; i++) {
-                                    System.out.println((i + 1) + ":" + kraskas[i].getUUID());
-                                }
-                                int idd = scanner.nextInt();
-                                shoppingCart.search(kraskas[idd - 1].getUUID(), kraskas[idd - 1].ser());
-                                System.out.println("-------------------------------");
-                                kraskas[idd - 1].read();
-                            } catch (NullPointerException e) {
-                                System.out.println("-------------------------------");
-                                System.out.println("Не существует ID под таким номером!!!");
-                                break;
-                            }
-                        case 4:
-                            orders.checkDone();
-                            break;
-                        case 0:
-                            return;
-                        default:
-                            System.out.println("-------------------------------");
-                            System.out.println("Неправильный ввод: повторите ввод значения ещё раз");
-                            break;
+        /*Для других видов представления*/
+//        Instruments[] instruments = new Instruments[99];
+//        for (int i = 0; i < Tovar.counter; i++) {
+//            instruments[i] = new Instruments();
+//            instruments[i].create();
+//            shoppingCart.add(instruments[i]);
+//        }
+//        Stroymat[] stroymats = new Stroymat[99];
+//        for (int i = 0; i < Tovar.counter; i++) {
+//            stroymats[i] = new Stroymat();
+//            stroymats[i].create();
+//            shoppingCart.add(stroymats[i]);
+//        }
+        while (true) {
+            System.out.println("Меню:\n1. Оформить заказ\n2. Посмотреть статус заказа\n3. Посмотреть заказ" +
+                    "\n4. Функция проверки заказов - обход коллекции и удаление всех объектов, время ожидания которых истекло и статус «обработан" +
+                    "\n5. Посмотреть корзину\n6. Удаление позиций из корзины\n7. Добавить товары в корзину" +
+                    "\n8. Функция поиска объекта по индетификатору в корзине\n0. Выход");
+            sc = scanner.nextInt();
+            switch (sc) {
+                case 1:
+                    /*Оформить заказ*/
+                    if (orders.orderStat() == null) {
+                        orders.offer(shoppingCart, credentials);
+                        orders.checkTime();
+                        System.out.println("Ваш оформленный заказ:");
+                        System.out.println("--------------------------");
+                        orders.show();
+                    } else {
+                        System.out.println("Заказ уже оформлен");
                     }
-                }
-            case 0:
-                return;
-            default:
-                System.out.println("-------------------------------");
-                System.out.println("Неправильный ввод: повторите ввод значения ещё раз");
-                break;
+                    break;
+                case 2:
+                    /*Статус заказа*/
+                    orders.checkTime();
+                    System.out.println("Статус заказа: " + orders.orderStat() +
+                            "\nВремя ожидания перехода заказа в другое состояние: " +
+                            orders.timeWait() / 1000 + " сек");
+                    System.out.println("--------------------------");
+                    break;
+                case 3:
+                    /*Просмотр заказа*/
+                    orders.checkTime();
+                    System.out.println("Ваш оформленный заказ:");
+                    System.out.println("--------------------------");
+                    orders.show();
+                    break;
+                case 4:
+                    /*Удаление заказа*/
+                    orders.checkDone();
+                    System.out.println("Теперь посмотрите статус заказа!");
+                    System.out.println("-------------------------------");
+                    break;
+                case 5:
+                    /*Просмотр корзины*/
+                    System.out.println("Корзина:");
+                    System.out.println("--------------------------");
+                    shoppingCart.show();
+                    break;
+                case 6:
+                    /*Удаление корзины*/
+                    for (int i = 0; i < Tovar.counter; i++) {
+                        shoppingCart.delete(kraskas[i]);
+//                        shoppingCart.delete(instruments[i]);
+//                        shoppingCart.delete(stroymats[i]);
+                    }
+                    Tovar.counter = 0;
+                    break;
+                case 7:
+                    /*Добавление товаров в корзину*/
+                    System.out.println("Введите количество товара которое хотите добавить");
+                    sc = scanner.nextInt();
+                    System.out.println("Такие позиции вы добавили:\n ");
+                    for (int i = Tovar.counter; i < Tovar.counter + sc; i++) {
+                        kraskas[i] = new Kraska();
+                        kraskas[i].create();
+                        shoppingCart.add(kraskas[i]);
+                        kraskas[i].read();
+//                        instruments[i] = new Instruments();
+//                        instruments[i].create();
+//                        shoppingCart.add(instruments[i]);
+//                        instruments[i].read();
+//
+//                        stroymats[i] = new Stroymat();
+//                        stroymats[i].create();
+//                        shoppingCart.add(stroymats[i]);
+//                        stroymats[i].read();
+                        System.out.println("--------------------------");
+                    }
+                    Tovar.counter += sc;
+                    break;
+                case 8:
+                    /*Поиск в корзине по id*/
+                    try {
+                        System.out.println("Какой ID выберете?");
+                        for (int i = 0; i < Tovar.counter; i++) {
+                            System.out.println((i + 1) + ". " + kraskas[i].getUUID());
+//                            System.out.println((i + 1) + ". " + instruments[i].getUUID());
+//                            System.out.println((i + 1) + ". " + stroymats[i].getUUID());
+                        }
+                        int idd = scanner.nextInt();
+                        shoppingCart.search(kraskas[idd - 1].getUUID(), kraskas[idd - 1].getUUIDs());
+//                        shoppingCart.search(instruments[idd - 1].getUUID(), instruments[idd - 1].getUUIDs());
+//                        shoppingCart.search(stroymats[idd - 1].getUUID(), stroymats[idd - 1].getUUIDs());
+                        System.out.println("-------------------------------");
+                        kraskas[idd - 1].read();
+                        System.out.println("-------------------------------");
+                    } catch (NullPointerException e) {
+                        System.out.println("-------------------------------");
+                        System.out.println("Не существует ID под таким номером!!!");
+                        break;
+                    }
+                    break;
+                case 0:
+                    return;
+                default:
+                    System.out.println("-------------------------------");
+                    System.out.println("Неправильный ввод: повторите ввод значения ещё раз");
+                    break;
+            }
         }
     }
 }
-

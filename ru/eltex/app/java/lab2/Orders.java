@@ -34,22 +34,22 @@ public class Orders {
     /*обход коллекции и удаление всех объектов, время ожидания которых истекло и статус «обработан»*/
     public void checkDone() {
         for (Order order : orders) {
-            if (order.getStatus() == OrderStatus.DONE && order.checkIntervalDone(System.currentTimeMillis())); {
+            if (order.getStatus() == OrderStatus.DONE && order.checkInterval(System.currentTimeMillis())) {
                 orders.remove(order);
                 dateOrder.remove(order);
             }
         }
     }
 
-    public long timeWait(){
-        for(Order order:orders){
+    public long timeWait() {
+        for (Order order : orders) {
             return order.getTimeWaiting();
         }
         return 0;
     }
 
-    public OrderStatus orderStat(){
-        for (Order order:orders){
+    public OrderStatus orderStat() {
+        for (Order order : orders) {
             return order.getStatus();
         }
         return null;
@@ -59,8 +59,6 @@ public class Orders {
         for (Order order : orders) {
             order.show();
             System.out.println("--------------------------");
-
         }
-
     }
 }

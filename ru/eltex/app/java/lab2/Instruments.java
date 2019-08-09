@@ -1,13 +1,15 @@
 package ru.eltex.app.java.lab2;
 
+import java.util.HashSet;
 import java.util.Scanner;
 import java.util.UUID;
 
 public class Instruments extends Tovar {
 
-    Instruments(){
+    Instruments() {
         ID = UUID.randomUUID();
 //        counter++;
+        setId.add(ID);
         this.name = "";
         this.article = 0;
         this.price = 0;
@@ -51,5 +53,15 @@ public class Instruments extends Tovar {
         super.delete();
         this.name = "";
         this.developer = "";
+    }
+
+    @Override
+    public UUID getUUID() {
+        return super.getUUID();
+    }
+
+    @Override
+    public HashSet<UUID> getUUIDs() {
+        return super.getUUIDs();
     }
 }
