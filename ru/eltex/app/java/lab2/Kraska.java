@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class Kraska extends Tovar {
 
-    Kraska() {
+    public Kraska() {
         ID = UUID.randomUUID();
 //        counter++;
         setId.add(ID);
