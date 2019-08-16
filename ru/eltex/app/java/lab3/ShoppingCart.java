@@ -1,5 +1,6 @@
 package ru.eltex.app.java.lab3;
 
+import ru.eltex.app.java.lab2.Kraska;
 import ru.eltex.app.java.lab2.Tovar;
 
 import java.util.*;
@@ -7,7 +8,7 @@ import java.util.*;
 public class ShoppingCart<T extends Tovar> {
 
     private List<T> tovars;
-    private Set<UUID> uuids;
+    public Set<UUID> uuids;
 
     public ShoppingCart() {
         this.tovars = new ArrayList<>();
@@ -24,7 +25,8 @@ public class ShoppingCart<T extends Tovar> {
     }
 
     public void delete(T tovar) {
-        this.tovars.remove(tovar);
+        uuids.remove(tovar.getUUID());
+        tovars.remove(tovar);
     }
 
     public void show() {
@@ -32,6 +34,11 @@ public class ShoppingCart<T extends Tovar> {
             tovar.read();
             System.out.println("-------------------------");
         }
+    }
+
+    public void show(UUID id, Kraska kraskas) {
+        if (isExistsUUID(id))
+            kraskas.read();
     }
 
     public boolean isExistsUUID(UUID id) {

@@ -93,20 +93,26 @@ public class Main {
                 case 8:
                     /*Поиск в корзине по id*/
                     try {
-                        System.out.println("Какой ID выберете?");
-                        for (int i = 0; i < Tovar.counter; i++) {
-                            System.out.println((i + 1) + ". " + kraskas[i].getUUID());
-//                            System.out.println((i + 1) + ". " + instruments[i].getUUID());
-//                            System.out.println((i + 1) + ". " + stroymats[i].getUUID());
+                        if (shoppingCart.uuids.size() == 0) {
+                            System.out.println("Корзина была удалена, искать нечего)");
+                            System.out.println("-------------------------------");
+                        } else {
+                            System.out.println("Какой ID выберете?");
+                            for (int i = 0; i < Tovar.counter; i++) {
+                                System.out.println((i + 1) + ". " + kraskas[i].getUUID());
+                            }
+                            int idd = scanner.nextInt();
+                            shoppingCart.search(kraskas[idd - 1].getUUID(), kraskas[idd - 1].getUUIDs());
+                            System.out.println("-------------------------------");
+                            shoppingCart.show(kraskas[idd - 1].getUUID(), kraskas[idd - 1]);
                         }
-                        int idd = scanner.nextInt();
-                        shoppingCart.search(kraskas[idd - 1].getUUID(), kraskas[idd - 1].getUUIDs());
-                        System.out.println("-------------------------------");
-                        kraskas[idd - 1].read();
-                        System.out.println("-------------------------------");
                     } catch (NullPointerException e) {
                         System.out.println("-------------------------------");
                         System.out.println("Не существует ID под таким номером!!!");
+                        break;
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        System.out.println("-------------------------------");
+                        System.out.println("ID не может быть меньше 1!");
                         break;
                     }
                     break;
