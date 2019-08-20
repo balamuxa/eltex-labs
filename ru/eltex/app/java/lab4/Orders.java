@@ -28,31 +28,16 @@ public class Orders<T extends Order> {
     }
 
     public void checkTime() {
-        synchronized (orders) {
-            Iterator it = orders.iterator();
-            while (it.hasNext()) {
-                Order order = (Order) it.next();
-                if (order.getStatus() == OrderStatus.WAIT ){//&&
-//                        order.checkInterval(System.currentTimeMillis())) {
-                    order.setStatus(OrderStatus.DONE);
-//                    System.out.printf("Check time");
-                }
+        for (Order order : orders) {
+            if (order.getStatus() == OrderStatus.WAIT) {
+                order.setStatus(OrderStatus.DONE);
             }
         }
     }
-//    public void checkTime() {
-//        for (Order order : orders) {
-//            if (order.getStatus() == OrderStatus.WAIT &&
-//                    order.checkInterval(System.currentTimeMillis())) {
-//                order.setStatus(OrderStatus.DONE);
-//            }
-//        }
-//    }
 
-    /*обход коллекции и удаление всех объектов, время ожидания которых истекло и статус «обработан»*/
     public void checkDone() {
         for (Order order : orders) {
-            if (order.getStatus() == OrderStatus.DONE && order.checkInterval(System.currentTimeMillis())) {
+            if (order.getStatus() == OrderStatus.DONE) {
                 orders.remove(order);
                 dateOrder.remove(order);
             }

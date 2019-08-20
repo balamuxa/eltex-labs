@@ -1,25 +1,24 @@
 package ru.eltex.app.java.lab4;
 
-public class CheckDone extends ACheck{
-    CheckDone(Orders orders) {
+public class CheckDone extends ACheck {
+
+    CheckDone(Orders orders, long pauseCheck) {
         super(orders);
-    }
-
-
-
-    CheckDone(Orders orders, long pause) {
-        super(orders);
-        this.pause = pause;
+        this.pauseCheck = pauseCheck;
     }
 
     @Override
     public void run() {
         while (fRun) {
             synchronized (getOrders()) {
-            getOrders().checkDone();
-             }
+                System.out.println("--------------------------");
+                System.out.println("Статус заказа: БЫЛО " + getOrders().orderStat());
+                getOrders().checkDone();
+                System.out.println("Статус заказа: СТАЛО " + getOrders().orderStat() + "  Время ожидания заказа: " + getOrders().timeWait() + "    --вызов из checkDone");
+            }
+//            fRun = false;
             try {
-                Thread.sleep(pause);
+                Thread.sleep(pauseCheck);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -1,49 +1,76 @@
 package ru.eltex.app.java.lab4;
 
-import ru.eltex.app.java.lab2.Credentials;
-import ru.eltex.app.java.lab2.Kraska;
-import ru.eltex.app.java.lab2.Instruments;
-import ru.eltex.app.java.lab2.Tovar;
 import ru.eltex.app.java.lab3.Order;
-import ru.eltex.app.java.lab3.ShoppingCart;
 
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
+//        Scanner scanner = new Scanner(System.in);
+
         Orders<Order> orders = new Orders();
         Generator gen = new Generator(orders);
+        CheckTime checkTime = new CheckTime(orders, 1000);
+        CheckDone checkDone = new CheckDone(orders, 1000);
 
-        Thread generator1 = new Thread(gen);
-        Thread generator2 = new Thread(gen);
+        /*Запуск первого потока*/
+        Thread generator1 = new Thread(gen, "Поток 1");
         generator1.start();
+        System.out.println("\n" + generator1.getName() + "\n");
         generator1.join(500);
+
+        /*Запуск и остановка потока проверки статуса заказа в состоянии WAIT*/
+        Thread checkTimeThread = new Thread(checkTime);
+        checkTimeThread.start();
+        checkTimeThread.join(500);
+        checkTime.offThread();
+
+        /*Запуск и остановка потока проверки статуса заказа в состоянии DONE*/
+        Thread checkDoneThread = new Thread(checkDone);
+        checkDoneThread.start();
+        checkDoneThread.join(500);
+        checkDone.offThread();
+
+        /*Запуск второго потока*/
+        Thread generator2 = new Thread(gen, "Поток 2");
         generator2.start();
+        System.out.println("\n" + generator2.getName() + "\n");
         generator2.join(500);
-        try {
-            Thread.sleep(1100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        /*Запуск и остановка потока проверки статуса заказа в состоянии WAIT*/
+        checkTime.onThread();
+        Thread checkTime2 = new Thread(checkTime);
+        checkTime2.start();
+        checkTime2.join(500);
+        checkTime.offThread();
+
+        /*Запуск и остановка потока проверки статуса заказа в состоянии DONE*/
+        checkDone.onThread();
+        Thread checkDone2 = new Thread(checkDone);
+        checkDone2.start();
+        checkDone2.join(500);
+        checkDone.offThread();
+
+        /*Остановка первого и второго потоков*/
         gen.offThread();
 
-//        System.out.println(orders.orderStat());
-//        Thread checkTime = new Thread(new CheckTime(orders, 1000));
-//        checkTime.start();
 
-
-//        System.out.println(orders.orderStat());
-//        Thread checkDone = new Thread(new CheckDone(orders, 1000));
-//        checkDone.start();
-//        System.out.println(orders.orderStat());
-
-
-//        while (true) {
-//            System.out.println(orders.orderStat());
-//            System.out.println(orders.timeWait());
-//            Thread.sleep(1500);
-//        }
+        /*Ввод с консоли*/
+//        /*Запуск потока*/
+//        Thread generator = new Thread(gen, "Поток 1");
+//        generator.start();
+//        System.out.println("\n" + generator.getName() + "\n");
+//        generator.join(500);
+//
+//        int sc;
+//        sc = scanner.nextInt();
+//        switch (sc) {
+//            case 1:
+//                Thread checkTimeThread = new Thread(checkTime);
+//                checkTimeThread.start();
+////                checkTimeThread.join(500);
+////                checkTime.offThread();
     }
 }
-
