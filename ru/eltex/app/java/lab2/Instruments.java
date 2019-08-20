@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class Instruments extends Tovar {
 
-    Instruments() {
+    public Instruments() {
         ID = UUID.randomUUID();
 //        counter++;
         setId.add(ID);
