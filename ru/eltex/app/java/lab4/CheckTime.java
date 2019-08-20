@@ -9,18 +9,18 @@ public class CheckTime extends ACheck {
 
     @Override
     public void run() {
-//        while (fRun) {
+        while (fRun) {
             synchronized (getOrders()) {
                 System.out.println("--------------------------");
                 System.out.println("Статус заказа: БЫЛО " + getOrders().orderStat());
                 getOrders().checkTime();
                 System.out.println("Статус заказа: СТАЛО " + getOrders().orderStat() + "    --вызов из checkTime");
-//            }
-//            try {
-//                Thread.sleep(pauseCheck);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
+            }
+            try {
+                Thread.sleep(pauseCheck);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

@@ -12,7 +12,7 @@ public class Generator<T extends Orders> extends ACheck {
 
     @Override
     public void run() {
-//        while (fRun) {
+        while (fRun) {
             synchronized (getOrders()) {
                 Credentials credentials = new Credentials("Ivan", "Ivanov", "ivanov", "ivan@m.tu");
                 ShoppingCart<Tovar> shoppingCart = new ShoppingCart();
@@ -33,11 +33,11 @@ public class Generator<T extends Orders> extends ACheck {
                 getOrders().show();
                 System.out.println("Статус заказа: " + getOrders().orderStat() + "    --вызов из generator");
             }
-//            try {
-//                Thread.sleep(pauseGen);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }
+            try {
+                Thread.sleep(pauseGen);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

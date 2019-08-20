@@ -3,7 +3,7 @@ package ru.eltex.app.java.lab4;
 public abstract class ACheck implements Runnable {
 
     public volatile boolean fRun = true;
-    public long pauseGen = 10000;
+    public long pauseGen = 3000;
     public long pauseCheck = 100;
     public Orders orders;
 
