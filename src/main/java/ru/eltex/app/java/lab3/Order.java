@@ -3,9 +3,10 @@ package ru.eltex.app.java.lab3;
 import ru.eltex.app.java.lab2.Credentials;
 import ru.eltex.app.java.lab2.OrderStatus;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Order {
+public class Order implements Serializable {
 
     private ShoppingCart shoppingCart;
     private Credentials credentials;

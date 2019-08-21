@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>eltex-labs3</artifactId>
+    <artifactId>eltex</artifactId>
     <groupId>ru.eltex.app.java.lab4</groupId>
     <version>1.0-SNAPSHOT</version>
 
@@ -28,10 +28,9 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <release>12</release>
-                    <source>6</source>
-                    <target>6</target>
-
+                    <release>11</release>
+<!--                    <source>6</source>-->
+<!--                    <target>6</target>-->
                 </configuration>
 
             </plugin>

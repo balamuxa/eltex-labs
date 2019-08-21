@@ -3,9 +3,10 @@ package ru.eltex.app.java.lab3;
 import ru.eltex.app.java.lab2.Kraska;
 import ru.eltex.app.java.lab2.Tovar;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class ShoppingCart<T extends Tovar> {
+public class ShoppingCart<T extends Tovar> implements Serializable {
 
     private List<T> tovars;
     public Set<UUID> uuids;

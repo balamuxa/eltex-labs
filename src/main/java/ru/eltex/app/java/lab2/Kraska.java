@@ -1,10 +1,11 @@
 package ru.eltex.app.java.lab2;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.UUID;
 
-public class Kraska extends Tovar {
+public class Kraska extends Tovar implements Serializable {
 
     public Kraska() {
         ID = UUID.randomUUID();

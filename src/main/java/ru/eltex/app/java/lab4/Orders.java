@@ -5,9 +5,10 @@ import ru.eltex.app.java.lab2.OrderStatus;
 import ru.eltex.app.java.lab3.Order;
 import ru.eltex.app.java.lab3.ShoppingCart;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Orders<T extends Order> {
+public class Orders<T extends Order> implements Serializable {
 
     private List<T> orders;
     private Map<Date, T> dateOrder;
