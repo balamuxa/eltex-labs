@@ -30,13 +30,20 @@ public class Main {
         orders.offer(shoppingCart2, credentials);
 //        orders.show();
 
-        ManagerOrderFile managerOrderFile = new ManagerOrderFile();
+//        ManagerOrderFile managerOrderFile = new ManagerOrderFile();
+
+        /*Сохранение заказов в двоичный фаил*/
 //        managerOrderFile.saveAll(orders);
 //        managerOrderFile.readAll();
 
-        Order order = orders.getOrders(1);
-        managerOrderFile.saveById(order);
-        managerOrderFile.readById(order.getSetId());
+        /*Сохранение по ID*/
+//        Order order = orders.getOrders(1);
+//        managerOrderFile.saveById(order);
+//        managerOrderFile.readById(order.getSetId());
 
+        /*Сохранеие заказов в JSON*/
+        ManagerOrderJSON managerOrderJSON = new ManagerOrderJSON();
+        managerOrderJSON.saveAll(orders);
+        managerOrderJSON.readAll();
     }
 }

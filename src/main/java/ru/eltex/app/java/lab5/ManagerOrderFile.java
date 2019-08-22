@@ -17,7 +17,7 @@ public class ManagerOrderFile extends AManageOrder {
 
     @Override
     public Order readById(HashSet<UUID> uuid) {
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file))) {
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file1))) {
             Order orderRead = (Order) objectInputStream.readObject();
             if(orderRead.getSetId().equals(uuid))
             orderRead.show();
@@ -34,7 +34,7 @@ public class ManagerOrderFile extends AManageOrder {
     @Override
     public void saveById(Order order) {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(
-                new FileOutputStream(file))) {
+                new FileOutputStream(file1))) {
             objectOutputStream.writeObject(order);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -45,7 +45,7 @@ public class ManagerOrderFile extends AManageOrder {
 
     @Override
     public Orders readAll() {
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file))) {
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file1))) {
             Orders ordersRead = (Orders) objectInputStream.readObject();
             ordersRead.show();
         } catch (FileNotFoundException e) {
@@ -61,7 +61,7 @@ public class ManagerOrderFile extends AManageOrder {
     @Override
     public void saveAll(Orders orders) {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(
-                new FileOutputStream(file))) {
+                new FileOutputStream(file1))) {
             objectOutputStream.writeObject(orders);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
