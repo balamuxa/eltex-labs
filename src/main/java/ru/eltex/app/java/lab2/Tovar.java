@@ -1,11 +1,12 @@
 package ru.eltex.app.java.lab2;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.UUID;
 
-public abstract class Tovar implements ICrudAction {
+public abstract class Tovar implements ICrudAction, Serializable {
 
     UUID ID;
     public static HashSet<UUID> setId = new HashSet<>();

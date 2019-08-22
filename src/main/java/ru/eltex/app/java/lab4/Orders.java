@@ -59,6 +59,10 @@ public class Orders<T extends Order> implements Serializable {
         return null;
     }
 
+    public Order getOrders(int i) {
+        return orders.get(i);
+    }
+
     public Orders show() {
         for (Order order : orders) {
             order.show();
