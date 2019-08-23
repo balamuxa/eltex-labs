@@ -25,6 +25,10 @@ public class Stroymat extends Tovar {
         counter++;
     }
 
+    public Stroymat(HashSet<UUID> ID, String name, int article, int price, String developer) {
+        super(ID, name, article, price, developer);
+    }
+
     @Override
     public void create() {
         super.create();

@@ -1,10 +1,7 @@
 package ru.eltex.app.java.lab2;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.UUID;
+import java.util.*;
 
 public abstract class Tovar implements ICrudAction, Serializable {
 
@@ -15,6 +12,22 @@ public abstract class Tovar implements ICrudAction, Serializable {
     protected int article;
     protected int price;
     protected String developer;
+
+
+    public Tovar(HashSet<UUID> ID, String name, int article, int price, String developer) {
+        this.setId = ID;
+        this.name = name;
+        this.article = article;
+        this.price = price;
+        this.developer = developer;
+    }
+
+    public Tovar(Kraska kraska, Instruments instruments, Stroymat stroymat) {
+
+    }
+
+    public Tovar() {
+    }
 
     @Override
     public void create() {

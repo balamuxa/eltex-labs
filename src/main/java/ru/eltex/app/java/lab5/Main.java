@@ -21,14 +21,15 @@ public class Main {
             kraskas[i] = new Kraska();
             kraskas[i].create();
             shoppingCart1.add(kraskas[i]);
-        }  for (int i = 0; i < 2; i++) {
-            kraskas[i] = new Kraska();
-            kraskas[i].create();
-            shoppingCart2.add(kraskas[i]);
         }
+//        for (int i = 0; i < 2; i++) {
+//            kraskas[i] = new Kraska();
+//            kraskas[i].create();
+//            shoppingCart2.add(kraskas[i]);
+//        }
         orders.offer(shoppingCart1, credentials);
-        orders.offer(shoppingCart2, credentials);
-//        orders.show();
+//        orders.offer(shoppingCart2, credentials);
+        orders.show();
 
 //        ManagerOrderFile managerOrderFile = new ManagerOrderFile();
 

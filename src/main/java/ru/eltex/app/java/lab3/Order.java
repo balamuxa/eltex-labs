@@ -18,6 +18,15 @@ public class Order implements Serializable {
     private Date dateCreate;
     private long timeWaiting;
 
+    public Order(HashSet<UUID> ID, ShoppingCart shoppingCart, Credentials credentials, OrderStatus status, Date dateCreate, long timeWaiting) {
+        this.setId = ID;
+        this.shoppingCart = shoppingCart;
+        this.credentials = credentials;
+        this.status = status;
+        this.dateCreate = dateCreate;
+        this.timeWaiting = timeWaiting;
+    }
+
     public static HashSet<UUID> getSetId() {
         return setId;
     }

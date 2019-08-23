@@ -8,6 +8,7 @@ import java.util.UUID;
 public class Kraska extends Tovar implements Serializable {
 
     public Kraska() {
+//        super();
         ID = UUID.randomUUID();
 //        counter++;
         setId.add(ID);
@@ -17,13 +18,17 @@ public class Kraska extends Tovar implements Serializable {
         this.developer = "";
     }
 
-    Kraska(String name, int article, int price, String developer) {
-//        this.ID = id;
-        this.name = name;
-        this.article = article;
-        this.price = price;
-        this.developer = developer;
-        counter++;
+//    Kraska(String name, int article, int price, String developer) {
+////        this.ID = id;
+//        this.name = name;
+//        this.article = article;
+//        this.price = price;
+//        this.developer = developer;
+//        counter++;
+//    }
+
+    public Kraska(HashSet<UUID> ID, String name, int article, int price, String developer) {
+        super(ID, name, article, price, developer);
     }
 
     @Override
