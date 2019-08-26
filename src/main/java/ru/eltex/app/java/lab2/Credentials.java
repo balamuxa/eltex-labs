@@ -1,14 +1,21 @@
 package ru.eltex.app.java.lab2;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.UUID;
 
 public class Credentials implements Serializable {
 
+    @SerializedName("ID покупателя")
     private UUID id;
+    @SerializedName("Фамилия")
     private String name;
+    @SerializedName("Имя")
     private String firstName;
+    @SerializedName("Отчество")
     private String secondName;
+    @SerializedName("Электронная почта")
     private String eMail;
 
     public Credentials(String name, String firstName, String secondName, String eMail) {

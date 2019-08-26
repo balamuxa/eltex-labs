@@ -1,5 +1,6 @@
 package ru.eltex.app.java.lab3;
 
+import com.google.gson.annotations.SerializedName;
 import ru.eltex.app.java.lab2.Credentials;
 import ru.eltex.app.java.lab2.OrderStatus;
 
@@ -12,10 +13,16 @@ public class Order implements Serializable {
 
     UUID ID;
     public static HashSet<UUID> setId = new HashSet<>();
+
+    @SerializedName("Корзина")
     private ShoppingCart shoppingCart;
+    @SerializedName("Покупатель")
     private Credentials credentials;
+    @SerializedName("Статус заказа")
     private OrderStatus status;
+    @SerializedName("Дата оформления")
     private Date dateCreate;
+    @SerializedName("Время ожидания")
     private long timeWaiting;
 
     public Order(HashSet<UUID> ID, ShoppingCart shoppingCart, Credentials credentials, OrderStatus status, Date dateCreate, long timeWaiting) {

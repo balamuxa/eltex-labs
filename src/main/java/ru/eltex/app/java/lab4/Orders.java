@@ -11,9 +11,9 @@ import java.util.*;
 
 public class Orders<T extends Order> implements Serializable {
 
-//    @SerializedName("Заказы")
+    @SerializedName("Заказы")
     private List<T> orders;
-//    @SerializedName("Дата заказа")
+    @SerializedName("Дата заказа")
     private Map<Date, T> dateOrder;
 
     public Orders() {
@@ -34,12 +34,10 @@ public class Orders<T extends Order> implements Serializable {
 
     }
 
-
     public void offer(ShoppingCart cart, Credentials user) {
         Order order = new Order(cart, user);
         orders.add((T) order);
         dateOrder.put(order.getDateCreate(), (T) order);
-//        dateOrder.put(new Date(System.currentTimeMillis()), (T) order);
     }
 
     public void checkTime() {
@@ -73,8 +71,8 @@ public class Orders<T extends Order> implements Serializable {
         return null;
     }
 
-    public Order getOrders(int i) {
-        return orders.get(i);
+    public Order getOrders(int id) {
+        return orders.get(id);
     }
 
     public Orders show() {

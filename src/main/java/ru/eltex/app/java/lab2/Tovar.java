@@ -1,5 +1,7 @@
 package ru.eltex.app.java.lab2;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.*;
 
@@ -8,11 +10,14 @@ public abstract class Tovar implements ICrudAction, Serializable {
     UUID ID;
     public static HashSet<UUID> setId = new HashSet<>();
     public static int counter = 0;
+    @SerializedName("Наименование товара")
     protected String name;
+    @SerializedName("Артикул")
     protected int article;
+    @SerializedName("Цена")
     protected int price;
+    @SerializedName("Производитель")
     protected String developer;
-
 
     public Tovar(HashSet<UUID> ID, String name, int article, int price, String developer) {
         this.setId = ID;

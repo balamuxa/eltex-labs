@@ -9,18 +9,12 @@ import java.util.UUID;
 
 public class ManagerOrderFile extends AManageOrder {
 
-    public static final String OrdersFile = "/home/balamuxa/IdeaProjects/eltex-labs3/orders.txt";
-
-    public ManagerOrderFile() {
-        super();
-    }
-
     @Override
     public Order readById(HashSet<UUID> uuid) {
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file1))) {
             Order orderRead = (Order) objectInputStream.readObject();
-            if(orderRead.getSetId().equals(uuid))
-            orderRead.show();
+            if (orderRead.getSetId().equals(uuid))
+                orderRead.show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

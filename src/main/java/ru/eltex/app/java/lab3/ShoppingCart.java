@@ -1,5 +1,6 @@
 package ru.eltex.app.java.lab3;
 
+import com.google.gson.annotations.SerializedName;
 import ru.eltex.app.java.lab2.Kraska;
 import ru.eltex.app.java.lab2.Tovar;
 
@@ -8,7 +9,9 @@ import java.util.*;
 
 public class ShoppingCart<T extends Tovar> implements Serializable {
 
+    @SerializedName("Товары")
     private List<T> tovars;
+    @SerializedName("ID заказа")
     public Set<UUID> uuids;
 
     public ShoppingCart() {
