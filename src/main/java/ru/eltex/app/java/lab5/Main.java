@@ -42,7 +42,7 @@ public class Main {
         ManagerOrderJSON managerOrderJSON = new ManagerOrderJSON();
 
         /*Сохранеие и чтение заказов в JSON*/
-//        managerOrderJSON.saveAll(orders);
+        managerOrderJSON.saveAll(orders);
 //        managerOrderJSON.readAll();
 
 //        /*Сохранение и чтение по ID в JSON*/
