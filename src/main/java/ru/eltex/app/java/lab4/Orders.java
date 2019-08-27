@@ -12,9 +12,9 @@ import java.util.*;
 public class Orders<T extends Order> implements Serializable {
 
     @SerializedName("Заказы")
-    private List<T> orders;
+    public List<T> orders;
     @SerializedName("Дата заказа")
-    private Map<Date, T> dateOrder;
+    public Map<Date, T> dateOrder;
 
     public Orders() {
         this.orders = new LinkedList<>();

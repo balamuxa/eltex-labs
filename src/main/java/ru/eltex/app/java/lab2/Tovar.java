@@ -9,7 +9,7 @@ public abstract class Tovar implements ICrudAction, Serializable {
 
     UUID ID;
     public static HashSet<UUID> setId = new HashSet<>();
-    public static int counter = 0;
+    public volatile static int counter = 0;
     @SerializedName("Наименование товара")
     protected String name;
     @SerializedName("Артикул")
