@@ -75,6 +75,15 @@ public class Orders<T extends Order> implements Serializable {
         return orders.get(id);
     }
 
+    public T getOrdersForJSON(String id){
+        for (Order order:orders) {
+            if (id.equals(order.getID().toString())) {
+                return (T) order;
+            }
+        }
+        return null;
+    }
+
     public Orders show() {
         for (Order order : orders) {
             order.show();
