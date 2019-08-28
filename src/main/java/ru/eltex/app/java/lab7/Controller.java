@@ -93,7 +93,7 @@ public class Controller {
         kraskas[0] = new Kraska();
         kraskas[0].create();
         shoppingCart.add(kraskas[0]);
-        return kraskas[0].getUUIDs().toString();
+        return kraskas[0].getUUIDs();
     }
 
     @RequestMapping("/delByID")
