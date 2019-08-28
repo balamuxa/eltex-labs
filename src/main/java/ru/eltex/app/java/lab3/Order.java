@@ -11,9 +11,10 @@ import java.util.UUID;
 
 public class Order implements Serializable {
 
-    UUID ID;
     public static HashSet<UUID> setId = new HashSet<>();
 
+    @SerializedName("ID заказа")
+    UUID ID;
     @SerializedName("Корзина")
     private ShoppingCart shoppingCart;
     @SerializedName("Покупатель")
@@ -32,6 +33,10 @@ public class Order implements Serializable {
         this.status = status;
         this.dateCreate = dateCreate;
         this.timeWaiting = timeWaiting;
+    }
+
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
     }
 
     public static HashSet<UUID> getSetId() {

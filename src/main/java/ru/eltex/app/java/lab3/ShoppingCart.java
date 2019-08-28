@@ -10,13 +10,17 @@ import java.util.*;
 public class ShoppingCart<T extends Tovar> implements Serializable {
 
     @SerializedName("Товары")
-    private List<T> tovars;
-    @SerializedName("ID заказа")
+    public List<T> tovars;
+    @SerializedName("ID товаров")
     public Set<UUID> uuids;
 
     public ShoppingCart() {
         this.tovars = new ArrayList<>();
         this.uuids = new TreeSet<>();
+    }
+
+    public void setUuids(Set<UUID> uuids) {
+        this.uuids = uuids;
     }
 
     public ShoppingCart(List<T> tovars) {

@@ -57,6 +57,15 @@ public class Orders<T extends Order> implements Serializable {
         }
     }
 
+    public void delete (String id){
+        for (Order order : orders) {
+            if (order.getID().toString().equals(id)) {
+                orders.remove(order);
+                dateOrder.remove(order);
+            }
+        }
+    }
+
     public long timeWait() {
         for (Order order : orders) {
             return order.getTimeWaiting();
@@ -75,11 +84,19 @@ public class Orders<T extends Order> implements Serializable {
         return orders.get(id);
     }
 
-    public T getOrdersForJSON(String id){
-        for (Order order:orders) {
+    public T getOrdersID(String id) {
+        for (Order order : orders) {
             if (id.equals(order.getID().toString())) {
                 return (T) order;
             }
+        }
+        return null;
+    }
+
+    public ShoppingCart getShoppingCart(Set<UUID> id) {
+        for (Order order : orders) {
+            order.getShoppingCart().setUuids(id);
+            return order.getShoppingCart();
         }
         return null;
     }
