@@ -8,15 +8,20 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.io.IOException;
 
 @ControllerAdvice
-public class Exceptions extends ReflectiveOperationException{
+public class Exceptions extends ReflectiveOperationException {
 
     @ExceptionHandler(NullPointerException.class)
-    protected ResponseEntity nullPointerExceptions(){
+    protected ResponseEntity nullPointerExceptions() {
         return new ResponseEntity("1-нет заказа с таким id", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(IOException.class)
-    protected ResponseEntity IOExceptions(){
+    protected ResponseEntity IOExceptions() {
         return new ResponseEntity("2-файл поврежден", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    protected ResponseEntity illegalArgumentException() {
+        return new ResponseEntity("3-неправильная команда", HttpStatus.NOT_FOUND);
     }
 }

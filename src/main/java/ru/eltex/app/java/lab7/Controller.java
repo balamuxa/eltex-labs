@@ -18,6 +18,14 @@ import java.util.UUID;
 @RestController
 public class Controller {
 
+    public static final String person = "/person";
+    public static final String create = "/create";
+    public static final String readAll = "/readAll";
+    public static final String readByID = "/readByID";
+    public static final String addToCart = "/addToCart";
+    public static final String delById = "/delByID";
+    public static final String checkCart = "/checkCart";
+
     Gson gson = new GsonBuilder()
             .setDateFormat("yyyy E MMM HH:mm:ss")
             .setPrettyPrinting()
@@ -46,13 +54,13 @@ public class Controller {
         }
     }
 
-    @RequestMapping("/person")
+    @RequestMapping(value = person)
     public Object person() {
         logger.info("person");
         return new Person("asd", 11);
     }
 
-    @RequestMapping("/")
+    @RequestMapping(value = create)
     public Object create() {
         logger.info("create");
         for (int i = 0; i < 2; i++) {
@@ -70,14 +78,14 @@ public class Controller {
         return "offer";
     }
 
-    @RequestMapping("/readAll")
+    @RequestMapping(value = readAll)
     public Object readAll() {
         logger.info("readAll");
         return gson.toJson(orders);
 //        return orders;
     }
 
-    @RequestMapping("/readByID")
+    @RequestMapping(value = readByID)
     public Object readByID(String id) {
         logger.info("readByID");
 //        Order order = orders.getOrdersForJSON(id);
@@ -85,18 +93,18 @@ public class Controller {
         return gson.toJson(orders.getOrdersID(id));
     }
 
-    @RequestMapping("/addToCard")
-    public Object addToCard(long id) {
-        logger.info("addToCard");
+    @RequestMapping(value = addToCart)
+    public Object addToCart(long id) {
+        logger.info("addToCart");
         UUID iD = new UUID(id, id);
         orders.getShoppingCart(Collections.singleton(iD));
-        kraskas[0] = new Kraska();
-        kraskas[0].create();
-        shoppingCart.add(kraskas[0]);
-        return kraskas[0].getUUIDs();
+        Kraska kraskas = new Kraska();
+        kraskas.create();
+        shoppingCart.add(kraskas);
+        return kraskas.getUUID();
     }
 
-    @RequestMapping("/delByID")
+    @RequestMapping(value = delById)
     public Object delByID(String id) {
         logger.info("delByID");
         Order order = orders.getOrdersID(id);
@@ -106,9 +114,15 @@ public class Controller {
         return "0";
     }
 
-    @RequestMapping("/checkCart")
+    @RequestMapping(value = checkCart)
     public Object checkCart() {
         logger.info("checkCart");
         return gson.toJson(shoppingCart);
+    }
+
+    @RequestMapping(value = "/*", headers = {"!/person", "!/create", "!/readAll", "!/readByID",
+            "!/addToCart", "!/delByID", "!/checkCart"})
+    public Object illegalArgumentException() {
+        throw new IllegalArgumentException();
     }
 }
